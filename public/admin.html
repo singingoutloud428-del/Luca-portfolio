@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Portfolio Editor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body class="admin-body">
+  <main class="admin-shell" id="editorView" hidden>
+    <div class="admin-topbar">
+      <div><p class="eyebrow">PRIVATE PORTFOLIO CMS</p><h1>Edit your website</h1><p>Changes are saved to Netlify and appear on the public portfolio.</p></div>
+      <div class="admin-actions"><a class="button secondary" href="/" target="_blank">Preview site ↗</a><button class="button secondary" id="logoutButton">Sign out</button></div>
+    </div>
+    <div class="notice" id="globalNotice"></div>
+    <div class="admin-grid">
+      <nav class="admin-sidebar" aria-label="Editor sections">
+        <a href="#profileEditor">Profile</a><a href="#aboutEditor">About</a><a href="#showreelEditor">Showreel</a><a href="#cvEditor">CV</a><a href="#skillsEditor">Skills</a><a href="#creditsEditor">Credits</a><a href="#trainingEditor">Training</a><a href="#galleryEditor">Gallery</a><a href="#linksEditor">Links</a><a href="#contactEditor">Contact</a>
+      </nav>
+      <div class="editor-sections">
+        <section class="editor-card" id="profileEditor"><h2>Profile & hero</h2><p>The first information casting professionals will see.</p><div class="form-grid">
+          <div class="field"><label for="profileName">Display name</label><input id="profileName"></div>
+          <div class="field"><label for="profileEyebrow">Disciplines</label><input id="profileEyebrow"></div>
+          <div class="field full"><label for="profileTagline">Headline</label><input id="profileTagline"></div>
+          <div class="field full"><label for="profileIntro">Short introduction</label><textarea id="profileIntro" rows="3"></textarea></div>
+          <div class="field"><label for="profileLocation">Location / base</label><input id="profileLocation"></div>
+          <div class="field"><label for="profileAvailability">Availability line</label><input id="profileAvailability"></div>
+          <div class="field full"><label>Headshot</label><div class="upload-box"><input id="headshotFile" type="file" accept="image/jpeg,image/png,image/webp"><button class="button secondary" id="uploadHeadshot" type="button">Upload headshot</button></div><span class="upload-status" id="headshotStatus"></span></div>
+          <div class="field full"><label for="headshotAlt">Headshot alt text</label><input id="headshotAlt" placeholder="Professional headshot of Luca"></div>
+        </div></section>
+
+        <section class="editor-card" id="aboutEditor"><h2>About</h2><p>Write this in first person and keep the strongest information near the beginning.</p><div class="form-grid"><div class="field"><label for="aboutHeading">Heading</label><input id="aboutHeading"></div><div class="field full"><label for="aboutBody">Biography</label><textarea id="aboutBody" rows="8"></textarea></div></div></section>
+
+        <section class="editor-card" id="showreelEditor"><h2>Showreel</h2><p>Paste a YouTube, Vimeo or direct MP4 URL. Hosting video externally avoids large serverless uploads.</p><div class="form-grid"><div class="field"><label for="showreelHeading">Heading</label><input id="showreelHeading"></div><div class="field full"><label for="showreelUrl">Showreel URL</label><input id="showreelUrl" type="url" placeholder="https://www.youtube.com/watch?v=..."></div><div class="field full"><label for="showreelCaption">Caption</label><input id="showreelCaption"></div></div></section>
+
+        <section class="editor-card" id="cvEditor"><h2>CV</h2><p>Upload a PDF up to 4 MB. A public “Open CV” button will appear automatically.</p><div class="form-grid"><div class="field"><label for="cvHeading">Heading</label><input id="cvHeading"></div><div class="field"><label for="cvFileName">Button / file name</label><input id="cvFileName"></div><div class="field full"><label for="cvSummary">Summary</label><input id="cvSummary"></div><div class="field full"><label>PDF CV</label><div class="upload-box"><input id="cvFile" type="file" accept="application/pdf"><button class="button secondary" id="uploadCv" type="button">Upload CV</button></div><span class="upload-status" id="cvStatus"></span></div></div></section>
+
+        <section class="editor-card" id="skillsEditor"><h2>Skills</h2><p>Add performance disciplines, specialist skills and relevant technical abilities.</p><div class="row-list" id="skillsRows"></div><button class="add-button" data-add="skill" type="button">+ Add skill</button></section>
+        <section class="editor-card" id="creditsEditor"><h2>Performance credits</h2><p>Add stage, screen, college and training productions.</p><div class="row-list" id="creditsRows"></div><button class="add-button" data-add="credit" type="button">+ Add credit</button></section>
+        <section class="editor-card" id="trainingEditor"><h2>Training</h2><p>Courses, workshops, qualifications and practitioner training.</p><div class="row-list" id="trainingRows"></div><button class="add-button" data-add="training" type="button">+ Add training</button></section>
+
+        <section class="editor-card" id="galleryEditor"><h2>Gallery</h2><p>Upload JPG, PNG or WEBP images up to 4 MB each, then add accessible alt text and an optional caption.</p><div class="form-grid"><div class="field full"><label>New gallery image</label><div class="upload-box"><input id="galleryFile" type="file" accept="image/jpeg,image/png,image/webp"><button class="button secondary" id="uploadGallery" type="button">Upload image</button></div><span class="upload-status" id="galleryStatus"></span></div></div><div class="row-list" id="galleryRows"></div></section>
+
+        <section class="editor-card" id="linksEditor"><h2>Extra links</h2><p>Add casting profiles, self-tapes, additional reels, press or coursework links.</p><div class="row-list" id="linksRows"></div><button class="add-button" data-add="link" type="button">+ Add link</button></section>
+        <section class="editor-card" id="contactEditor"><h2>Contact</h2><p>Public contact details are optional. The enquiry form works through Netlify Forms.</p><div class="form-grid"><div class="field"><label for="contactHeading">Heading</label><input id="contactHeading"></div><div class="field full"><label for="contactText">Intro</label><textarea id="contactText" rows="4"></textarea></div><div class="field"><label for="contactEmail">Public email</label><input id="contactEmail" type="email"></div><div class="field"><label for="contactInstagram">Instagram URL</label><input id="contactInstagram" type="url"></div><div class="field full"><label for="contactSpotlight">Spotlight / casting profile URL</label><input id="contactSpotlight" type="url"></div><div class="field"><label for="siteAccent">Accent colour</label><input id="siteAccent" type="color" value="#9eb9d4"></div></div></section>
+
+        <div class="save-bar"><span id="saveHint">Make your changes, then save them to publish.</span><button class="button" id="saveButton" type="button">Save & publish changes</button></div>
+      </div>
+    </div>
+  </main>
+  <script src="/assets/admin.js" defer></script>
+</body>
+</html>

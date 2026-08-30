@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Portfolio Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body class="admin-body">
+  <main class="login-wrap">
+    <section class="login-card" aria-labelledby="loginTitle">
+      <a class="login-brand" href="/" aria-label="Back to portfolio">
+        <span class="brand-mark">LP</span>
+        <span>Performer Portfolio</span>
+      </a>
+      <p class="eyebrow">PRIVATE CONTENT MANAGER</p>
+      <h1 id="loginTitle">Sign in to update your portfolio</h1>
+      <p>Use your private admin password to upload your CV and photographs, change your showreel, and edit your portfolio content.</p>
+
+      <div class="login-features" aria-label="Editor features">
+        <span>Upload CV</span>
+        <span>Add photos</span>
+        <span>Edit credits</span>
+        <span>Update showreel</span>
+      </div>
+
+      <div class="notice error" id="loginNotice" role="alert" aria-live="polite"></div>
+      <form id="loginForm">
+        <label class="login-field" for="password">
+          <span>Admin password</span>
+          <div class="password-control">
+            <input id="password" type="password" autocomplete="current-password" placeholder="Enter your password" required autofocus />
+            <button id="togglePassword" class="password-toggle" type="button" aria-label="Show password">Show</button>
+          </div>
+        </label>
+        <button class="button primary login-submit" id="loginButton" type="submit">Sign in to editor</button>
+      </form>
+      <p class="login-help">Your password is stored securely as the <strong>ADMIN_PASSWORD</strong> environment variable in Netlify, not in the public website code.</p>
+      <a class="login-back" href="/">← Back to public portfolio</a>
+    </section>
+  </main>
+  <script src="/assets/login.js" defer></script>
+</body>
+</html>
